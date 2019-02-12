@@ -11,8 +11,8 @@ class ChatScreen extends Component {
         this.state = {
             currentUser: {},
             currentRoom: {},
-            message:[],
-            userWhoAreTyping: [],
+            messages:[],
+            usersWhoAreTyping: [],
         }
         this.sendMessage = this.sendMessage.bind(this)
         this.sendTypingEvent = this.sendTypingEvent.bind(this)
@@ -48,7 +48,7 @@ class ChatScreen extends Component {
             roomId: "19401814",
             messageLimit: 100,
             hooks: {
-              newMessage: message => {
+              onMessage: message => {
                 this.setState({
                   messages: [...this.state.messages, message],
                 })
@@ -107,7 +107,7 @@ class ChatScreen extends Component {
           <aside style={styles.whosOnlineListContainer}>
             <WhosOnlineList
               currentUser = {this.state.currentUser}
-              users ={this.state.currentRoom.users} 
+              users ={this.state.currentRoom.users}
             />
           </aside>
           <section style={styles.chatListContainer}>
